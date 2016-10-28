@@ -1,0 +1,44 @@
+{
+  "name": "next-commit",
+  "version": "1.0.5",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "NODE_ENV=test gulp test",
+    "test-watch": "NODE_ENV=test gulp test-watch"
+  },
+  "bin": {
+    "next-commit": "./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazlojuly/next-commit.git"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "presentation",
+    "demo"
+  ],
+  "author": "lazlojuly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lazlojuly/next-commit/issues"
+  },
+  "homepage": "https://github.com/lazlojuly/next-commit#readme",
+  "dependencies": {
+    "simple-git": "^1.57.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-onpono-base": "^1.2.0",
+    "eslint-plugin-import": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1",
+    "mocha": "^3.1.2",
+    "run-sequence": "^1.2.2",
+    "should": "^11.1.1",
+    "should-sinon": "0.0.5",
+    "sinon": "^1.17.6"
+  }
+}
