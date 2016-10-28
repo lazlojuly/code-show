@@ -1,18 +1,18 @@
 {
-  "name": "next-commit",
+  "name": "code-show",
   "version": "0.5.0",
-  "description": "",
+  "description": "A simple command-line tool for code presentation.",
   "main": "./src/index.js",
   "scripts": {
     "test": "NODE_ENV=test gulp test",
     "test-watch": "NODE_ENV=test gulp test-watch"
   },
   "bin": {
-    "next-commit": "./src/index.js"
+    "code-show": "./src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lazlojuly/next-commit.git"
+    "url": "git+https://github.com/lazlojuly/code-show.git"
   },
   "keywords": [
     "git",
@@ -23,9 +23,9 @@
   "author": "lazlojuly",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lazlojuly/next-commit/issues"
+    "url": "https://github.com/lazlojuly/code-show/issues"
   },
-  "homepage": "https://github.com/lazlojuly/next-commit#readme",
+  "homepage": "https://github.com/lazlojuly/code-show#readme",
   "dependencies": {
     "simple-git": "^1.57.0"
   },
