@@ -5,6 +5,7 @@ module.exports = (terminal, git, messages) => {
 		getCurrentCommit,
 		getNextCommit,
 		startCli,
+		cli,
 	}
 
 	function getCurrentCommit() {
@@ -35,9 +36,9 @@ module.exports = (terminal, git, messages) => {
 
 	function getState(logs) {
 		const state = { logs, current: {}, next: {} }
-		return getCurrentCommit().then(current => {
+		return this.getCurrentCommit().then(current => {
 			state.current = current
-			return getNextCommit(logs, current).then(next => {
+			return this.getNextCommit(logs, current).then(next => {
 				state.next = next
 				return state
 			})
@@ -46,35 +47,37 @@ module.exports = (terminal, git, messages) => {
 
 	function startCli(state) {
 		messages.printState(state)
-		return terminal.promptUser('Type "next" to continue: ').then(input => {
-			let result
+		return terminal.promptUser('Type "next" to continue: ')
+		.then(input => this.cli(input, state))
+	}
 
-			switch (input) {
-			case 'exit':
-				messages.print('Bye!')
-				terminal.close()
-				break
+	function cli(input, state) {
+		let result
 
-			case 'next':
-				messages.print('Next!')
-				result = git.checkout(state.next.hash)
-				.then(() => getState(state.logs))
-				.then(startCli)
-				break
+		switch (input) {
+		case 'exit':
+			messages.print('Bye!')
+			terminal.close()
+			break
 
-			case 'help':
-				messages.printHelp()
-				result = startCli(state)
-				break
+		case 'help':
+			messages.printHelp()
+			result = this.startCli(state)
+			break
 
-			default:
-				messages.printCommandNotFound()
-				result = startCli(state)
-				break
-			}
+		case 'next':
+			result = git.checkout(state.next.hash)
+			.then(() => this.getState(state.logs))
+			.then(this.startCli)
+			break
 
-			return result
-		})
+		default:
+			messages.printCommandNotFound()
+			result = this.startCli(state)
+			break
+		}
+
+		return result
 	}
 
 }
