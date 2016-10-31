@@ -1,6 +1,6 @@
 {
   "name": "code-show",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "A simple command-line tool for code presentation.",
   "main": "./src/index.js",
   "scripts": {
